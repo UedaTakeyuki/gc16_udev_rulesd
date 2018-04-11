@@ -1,6 +1,8 @@
 # for FOMA L-05A
 KERNEL=="sr[0-9]*", ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}=="2000", RUN+="/usr/bin/eject /dev/$kernel"
-ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}=="2003", RUN+="/bin/ln -s /dev/ttyUSB3 /tmp/gc_modem"
+ACTION=="add", ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}=="2003", RUN+="/bin/ln -s /dev/ttyUSB3 /tmp/gc_modem"
+ACTION=="add", ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}=="2003", RUN+="/bin/ln -s /dev/ttyUSB3 /tmp/gc_modem2"
+ACTION=="remove", ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}=="2003", RUN+="/usr/bin/unlink /tmp/gc_modem"
 
 # USB Modem (ttyUSB)
 #SUBSYSTEM=="usb", ATTR{idVendor}=="1004", ATTR{idProduct}=="6124", RUN+="/sbin/modprobe usbserial vendor=0x$attr{idVendor} product=0x$attr{idProduct}"
